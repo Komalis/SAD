@@ -54,7 +54,7 @@ function initLockBouton()
 			url: urlTopic,
 			success: function(data)
 			{
-				var lockPage = document.implementation.createHTMLDocument("LockPage");
+				var lockPage = document.implementation.createHTMLDocument();
 				lockPage.documentElement.innerHTML = data;
 				urlLock = lockPage.getElementsByClassName('bloquer')[0].href;
 				boutonLock.innerHTML = '<a target="popup" href="'+ urlLock +'" title="Bloquer ce message" id="lock' + i + '"><img src="http://image.noelshack.com/fichiers/2012/26/1341119589-bt_forum_bann_48h.gif" alt="Bloquer ce message" height="12" width="11">'
