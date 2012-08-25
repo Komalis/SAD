@@ -55,7 +55,7 @@ function initLockBouton()
 			url: urlTopic,
 			success: function(data)
 			{
-				var lockPage = document.implementation.createHTMLDocument();
+				var lockPage = document.implementation.createHTMLDocument("Lock");
 				lockPage.documentElement.innerHTML = data;
 				if (imgTopic == "http://image.jeuxvideo.com/pics/forums/topic_cadenas.gif" || imgTopic == "http://image.jeuxvideo.com/pics/forums/topic_marque_off.gif")
 				{
