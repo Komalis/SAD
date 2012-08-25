@@ -45,6 +45,7 @@ function initLockBouton()
 	//Création du bouton de Lock.
 	jQuery('#liste_topics tbody #topic').each(function()
 	{
+		var imgTopic = this.querySelector("td img").src;
 		var urlTopic = this.getElementsByTagName('td')[3].getElementsByTagName('a')[0].href;
 		var boutonLock = this.getElementsByTagName('td')[2];
 		var t = this;
@@ -56,8 +57,16 @@ function initLockBouton()
 			{
 				var lockPage = document.implementation.createHTMLDocument();
 				lockPage.documentElement.innerHTML = data;
-				urlLock = lockPage.getElementsByClassName('bloquer')[0].href;
-				boutonLock.innerHTML = '<a target="popup" href="'+ urlLock +'" title="Bloquer ce message" id="lock' + i + '"><img src="http://image.noelshack.com/fichiers/2012/26/1341119589-bt_forum_bann_48h.gif" alt="Bloquer ce message" height="12" width="11">'
+				if (imgTopic == "http://image.jeuxvideo.com/pics/forums/topic_cadenas.gif" || imgTopic == "http://image.jeuxvideo.com/pics/forums/topic_marque_off.gif")
+				{
+					urlLock = lockPage.getElementsByClassName('debloquer')[0].href;
+					boutonLock.innerHTML = '<a target="popup" href="'+ urlLock +'" title="Débloquer ce message" id="lock' + i + '"><img src="http://image.noelshack.com/fichiers/2012/26/1341119589-bt_forum_bann_48h.gif" alt="Bloquer ce message" height="12" width="11">'
+				}
+				else
+				{
+					urlLock = lockPage.getElementsByClassName('bloquer')[0].href;
+					boutonLock.innerHTML = '<a target="popup" href="'+ urlLock +'" title="Bloquer ce message" id="lock' + i + '"><img src="http://image.noelshack.com/fichiers/2012/26/1341119589-bt_forum_bann_48h.gif" alt="Bloquer ce message" height="12" width="11">'
+				}
 			}
 		})
 	});
